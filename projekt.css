@@ -1,48 +1,144 @@
-
 body {
         background: linear-gradient(to right, rgba(255, 2, 171, 0.3), white);
-    }
-    
-#hh1 {
-        font-family:Verdana;
-        text-align: center;
-    
 }
 
+#hh1 {
+        font-family: Verdana;
+        text-align: center;
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+        color: white;
+        text-align: center;
+        font-family: Verdana;
+}
+
+span {
+
+}
 
 .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 10px;
+        padding: 20px;
+        justify-content: center;
+        background-color: rgba(8, 126, 194, 0.3);
+        margin: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border: 2px solid black;
+        font-family: Verdana;
+        font-size: 20px;
+}
 
-        display: flex;
-        justify-content: center; /* Wyśrodkowanie poziome */
-        align-items: center; /* Wyśrodkowanie pionowe (opcjonalnie) */
-       
-   
-    
+/* stylowanie checkboxa */
+input[type="checkbox"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        background-color: rgb(255, 255, 255);
+        border: 2px solid black;
+        cursor: pointer;
+        outline: none;
+    }
 
+    input[type="checkbox"]:checked {
+        background-color: rgb(218, 140, 193);
+    }
+
+        input[type="checkbox"]:checked::after {
+                content: "✓";
+                color: white;
+                font-size: 20px;
+                text-align: center;
+                line-height: 20px;
+        }
+
+button {
+        text-shadow:0 8px 8px pink;
+        color: rgb(250, 171, 184);
+        background-color: rgb(255, 255, 255);
+        border-radius: 2px solid black;
+        font-family: Verdana;
+        font-size: 20px;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border: 2px solid black;
+        font-size: 20px;
+        font-family: Verdana;
+        padding: 10px 20px;
+        
 }
 
 
-button {
-    background-color: black;
-    border-radius:2px  solid black;
-    color:white;
-    font-family:Verdana;
-
-
+button:hover {
+        background-color: rgb(218, 140, 193);
+        color: white;
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border: 2px solid black;
+        font-family: Verdana;
+        font-size: 20px;
+        padding: 10px 20px;
 }
 
 
 #p {
 
-        font-size:30px;
-        font-family:Verdana;
-        
+        font-size: 30px;
+        font-family: Verdana;
+
 }
 
 
-#main {
-
-
-        display:grid;
-        
+.section {
+        background-color: rgba(250, 247, 247, 0.3);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        border: 2px solid rgb(255, 255, 255);
+        font-family: Verdana;
+        font-size: 20px;
 }
+
+#section1 {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+    #section2 {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    #section3 {
+        grid-column: 3 / 4;
+        grid-row: 1 / 2;
+    }
+
+    #section4 {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+
+    #section5 {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+    }
+
+    #section6 {
+        grid-column: 3 / 4;
+        grid-row: 2 / 3;
+    }

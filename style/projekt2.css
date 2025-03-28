@@ -1,0 +1,9 @@
+
+
+body {
+    
+    background: linear-gradient(to right, rgba(255, 2, 171, 0.3), white);
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}

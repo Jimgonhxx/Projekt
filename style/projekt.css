@@ -63,6 +63,11 @@ body {
         text-align: center;
     }
     
+    #footer {
+       
+        text-align: center;
+        font-family:Verdana;
+    }
     input[type="number"], select {
         width: 80%;
         padding: 10px;
@@ -73,6 +78,17 @@ body {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     
+
+
+    select,input {
+
+        background-color: pink;
+
+
+
+
+
+    }
     input[type="checkbox"] {
         -webkit-appearance: none;
         -moz-appearance: none;

@@ -28,23 +28,12 @@ body {
     font-weight: bold;
 }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-}
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    transition: color 0.3s;
-}
 
-.nav-links a:hover {
-    color: #ffdd57;
+#hh1 {
+    text-align: center; /* Wyrównanie tekstu do środka */
+    margin-top: 20px; /* Dodanie odstępu od góry */
+    font-weight: bold; /* Pogrubienie tekstu */
 }
 
 /* Sekcje */
@@ -132,4 +121,79 @@ input[type="number"], select {
     text-decoration: underline;
     color: #2d0196;
     transition: color 0.3s ease-in-out;
+}
+
+
+
+/* Styl dla urządzeń mobilnych */
+@media (max-width: 768px) {
+    /* Kontener */
+    .container {
+        grid-template-columns: 1fr; /* Jedna kolumna zamiast dwóch */
+        padding: 10px;
+    }
+
+    /* Sekcje */
+    .section {
+        padding: 15px;
+        font-size: 14px; /* Zmniejsz rozmiar tekstu */
+    }
+
+    .section h3 {
+        font-size: 18px; /* Zmniejsz nagłówki */
+    }
+
+    /* Formularze */
+    input[type="number"], select {
+        width: 100%; /* Formularze zajmują całą szerokość */
+        font-size: 14px; /* Zmniejsz rozmiar czcionki */
+    }
+
+    /* Przycisk */
+    #button {
+        padding: 8px 15px; /* Zmniejsz padding przycisku */
+        font-size: 14px; /* Zmniejsz rozmiar czcionki */
+    }
+
+    /* Nagłówek */
+    .header {
+        flex-direction: column; /* Ustaw elementy w kolumnie */
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column; /* Linki w nawigacji w jednej kolumnie */
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 14px; /* Zmniejsz rozmiar linków */
+    }
+
+
+    /* Dostosowanie linków w nawigacji */
+.navbar-nav .nav-link {
+    font-size: 16px;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffdd57; /* Żółty kolor po najechaniu */
+}
+
+/* Dostosowanie przycisku hamburgera */
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+    /* Stopka */
+    .footer {
+        padding: 15px;
+        font-size: 12px; /* Zmniejsz rozmiar tekstu w stopce */
+    }
 }

@@ -1,44 +1,6 @@
-/* Ogólne style */
-html, body {
-    height: 100%; /* Ustaw wysokość na 100% */
-    margin: 0;
-    display: flex;
-    flex-direction: column; /* Ustaw układ kolumnowy */
-}
-
-body {
-    background: linear-gradient(to right, #f0f8ff, #e6e6fa);
-    font-family: 'Arial', sans-serif;
-    color: #333;
-}
-
-/* Nagłówek */
-.header {
-    background-color: #007bff;
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.header .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-
-
-#hh1 {
-    text-align: center; /* Wyrównanie tekstu do środka */
-    margin-top: 20px; /* Dodanie odstępu od góry */
-    font-weight: bold; /* Pogrubienie tekstu */
-}
-
 /* Sekcje */
 .container {
-    flex-grow: 1; /* Rozciągnij zawartość, aby wypełnić przestrzeń */
+    flex-grow: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -56,6 +18,11 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+}
+
+#hh1{
+    text-align: center;
+    margin-top: 20px;
 }
 
 .section h3 {
@@ -76,124 +43,4 @@ input[type="number"], select {
 .button-container {
     text-align: center;
     margin: 20px 0;
-}
-
-#button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#button:hover {
-    background-color: #0056b3;
-}
-
-/* Stopka */
-.footer {
-    background: linear-gradient(to right, #007bff, #0056b3); /* Gradient od jasnego do ciemnego niebieskiego */
-    color: white;
-    text-align: center;
-    padding: 20px;
-    border-top: none;
-}
-
-.footer p {
-    margin: 10px 0;
-    font-size: 14px;
-}
-
-.footer a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.footer a i {
-    margin-right: 5px;
-}
-
-.footer a:hover {
-    text-decoration: underline;
-    color: #2d0196;
-    transition: color 0.3s ease-in-out;
-}
-
-
-
-/* Styl dla urządzeń mobilnych */
-@media (max-width: 768px) {
-    /* Kontener */
-    .container {
-        grid-template-columns: 1fr; /* Jedna kolumna zamiast dwóch */
-        padding: 10px;
-    }
-
-    /* Sekcje */
-    .section {
-        padding: 15px;
-        font-size: 14px; /* Zmniejsz rozmiar tekstu */
-    }
-
-    .section h3 {
-        font-size: 18px; /* Zmniejsz nagłówki */
-    }
-
-    /* Formularze */
-    input[type="number"], select {
-        width: 100%; /* Formularze zajmują całą szerokość */
-        font-size: 14px; /* Zmniejsz rozmiar czcionki */
-    }
-
-    /* Przycisk */
-    #button {
-        padding: 8px 15px; /* Zmniejsz padding przycisku */
-        font-size: 14px; /* Zmniejsz rozmiar czcionki */
-    }
-
-    /* Nagłówek */
-    .header {
-        flex-direction: column; /* Ustaw elementy w kolumnie */
-        text-align: center;
-    }
-
-    .nav-links {
-        flex-direction: column; /* Linki w nawigacji w jednej kolumnie */
-        gap: 10px;
-    }
-
-    .nav-links a {
-        font-size: 14px; /* Zmniejsz rozmiar linków */
-    }
-
-
-    /* Dostosowanie linków w nawigacji */
-.navbar-nav .nav-link {
-    font-size: 16px;
-    padding: 10px;
-    transition: color 0.3s ease;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #ffdd57; /* Żółty kolor po najechaniu */
-}
-
-/* Dostosowanie przycisku hamburgera */
-.navbar-toggler {
-    border: none;
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-    /* Stopka */
-    .footer {
-        padding: 15px;
-        font-size: 12px; /* Zmniejsz rozmiar tekstu w stopce */
-    }
 }

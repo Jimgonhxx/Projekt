@@ -98,3 +98,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2000); // Przekierowanie po 2 sekundach
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Załaduj nagłówek
+    fetch('../components/header.html')
+        .then(response => response.text())
+        .then(html => {
+            document.body.insertAdjacentHTML('afterbegin', html); // Dodaj nagłówek na początku <body>
+        })
+        .catch(error => console.error('Błąd podczas ładowania nagłówka:', error));
+
+    // Załaduj stopkę
+    fetch('../components/footer.html')
+        .then(response => response.text())
+        .then(html => {
+            document.body.insertAdjacentHTML('beforeend', html); // Dodaj stopkę na końcu <body>
+        })
+        .catch(error => console.error('Błąd podczas ładowania stopki:', error));
+});

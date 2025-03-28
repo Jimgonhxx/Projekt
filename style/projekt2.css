@@ -1,9 +1,20 @@
+/* Sekcja główna */
+h1 {
+    text-align: center;
+    margin-top: 10px; /* Zmniejszono odstęp od góry */
+    font-size: 28px;
+    color: #007bff;
+}
 
+.training-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Zmniejszono odstęp między przyciskami */
+    margin-top: 20px; /* Zmniejszono odstęp od góry */
+}
 
-body {
-    
-    background: linear-gradient(to right, rgba(255, 2, 171, 0.3), white);
-    font-family: Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
+#training-result {
+    margin-top: 10px; /* Zmniejszono odstęp od góry */
+    font-size: 18px;
+    text-align: center;
 }

@@ -21,11 +21,40 @@
             <span class="gender">Kobieta <input type="checkbox" class="gender-checkbox"></span>
             <span class="gender">Mężczyzna <input type="checkbox" class="gender-checkbox"></span>
         </div>
-        <div class="section" id="section2">Podaj wiek:</div>
-        <div class="section" id="section3">Podaj wage</div>
-        <div class="section" id="section4">Sekcja 4</div>
-        <div class="section" id="section5">Sekcja 5</div>
-        <div class="section" id="section6">Sekcja 6</div>
+        <div class="section" id="section2">Podaj wiek:
+            <input type="number" id="age" placeholder="Wiek" min="0" max="120" required>
+        </div>
+        <div class="section" id="section3">Podaj wage 
+            <input type="number" id="weight" placeholder="Waga" min="0" max="500" required>
+        </div>
+        <div class="section" id="section4">
+            <label for="height">Podaj wzrost:</label>
+            <input type="number" id="height" placeholder="Wzrost" min="0" max="300" required>
+            <select id="unit">
+                <option value="cm">cm</option>
+                <option value="m">m</option>
+                <option value="in">in</option>
+                <option value="ft">ft</option>
+            </select>
+        </div>
+        <div class="section" id="section5">
+            <label for="activity">Podaj poziom aktywności:</label>
+            <select id="activity">
+                <option value="none">Brak</option>
+                <option value="light">Lekka</option>
+                <option value="moderate">Umiarkowana</option>
+                <option value="active">Aktywna</option>
+                <option value="very-active">Bardzo aktywna</option>
+            </select>
+        </div>
+        <div class="section" id="section6">
+            <label for="goal">Podaj cel:</label>
+            <select id="goal">
+                <option value="lose-weight">Schudnąć</option>
+                <option value="maintain-weight">Utrzymać wagę</option>
+                <option value="gain-weight">Przytyć</option>
+            </select>
+        </div>
     </div>
 </body>
 </html>

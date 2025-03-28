@@ -58,6 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Redirect to another page
-        window.location.href = "newpage.html";
+        window.location.href = "projekt2.html";
     });
 });

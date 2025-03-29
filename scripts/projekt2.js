@@ -1,29 +1,71 @@
+// Funkcja do wyświetlania treningu w zależności od lokalizacji wybranej przez użytkownika
 function selectTraining(location) {
     const resultDiv = document.getElementById("training-result");
 
-    let message = "";
-    switch (location) {
-        case "home":
-            message = "Wybrałeś trening w domu! Możesz skorzystać z maty, hantli lub ćwiczeń z masą własnego ciała.";
-            break;
-        case "gym":
-            message = "Wybrałeś trening na siłowni! Skorzystaj z maszyn, wolnych ciężarów i zajęć grupowych.";
-            break;
-        case "outdoor":
-            message = "Wybrałeś trening na świeżym powietrzu! Spróbuj biegania, jazdy na rowerze lub treningu w parku.";
-            break;
-        default:
-            message = "Wybierz miejsce treningu.";
+    // Definicje zdjęć i opisów dla każdego miejsca
+    const trainingOptions = {
+        home: {
+            message: "Trening w domu! Możesz skorzystać z maty, hantli lub ćwiczeń z masą własnego ciała.",
+            images: [
+                "../images/home-training/home-training1.webp",
+                "../images/home-training/home-training2.webp",
+                "../images/home-training/home-training3.jpg"
+            ]
+        },
+        gym: {
+            message: "Trening na siłowni! Skorzystaj z maszyn, wolnych ciężarów i zajęć grupowych.",
+            images: [
+                "../images/gym-training/gym-training1.jpg",
+                "../images/gym-training/gym-training2.jpg",
+                "../images/gym-training/gym-training3.webp"
+            ]
+        },
+        outdoor: {
+            message: "Trening na świeżym powietrzu! Spróbuj biegania, jazdy na rowerze lub treningu w parku.",
+            images: [
+                "../images/outdoor-training/outdoor-training1.jpg",
+                "../images/outdoor-training/outdoor-training2.jpg",
+                "../images/outdoor-training/outdoor-training3.jpg"
+            ]
+        }
+    };
+
+    // Pobierz dane dla wybranego miejsca
+    const selectedOption = trainingOptions[location];
+
+    if (!selectedOption) {
+        resultDiv.innerHTML = "<p>Nie znaleziono danych dla wybranego miejsca treningu.</p>";
+        return;
     }
 
-    // Wyświetl wynik w sekcji
+    // Generowanie HTML dla slidera
+    const imagesHtml = selectedOption.images
+        .map((imageUrl, index) => `
+            <div class="carousel-item ${index === 0 ? "active" : ""}">
+                <img src="${imageUrl}" class="d-block w-100" alt="${location} training ${index + 1}">
+            </div>
+        `)
+        .join("");
+
     resultDiv.innerHTML = `
-        <div class="alert alert-info" role="alert">
-            ${message}
+        <p class="training-message">${selectedOption.message}</p>
+        <div id="trainingCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                ${imagesHtml}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#trainingCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#trainingCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     `;
 }
 
+// Funkcja do wyświetlania tostera
 document.addEventListener("DOMContentLoaded", () => {
     // Załaduj nagłówek
     fetch('../components/header.html')

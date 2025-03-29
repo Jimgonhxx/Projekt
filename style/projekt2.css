@@ -1,9 +1,40 @@
+/* Sekcja główna */
+h1 {
+    text-align: center;
+    margin-top: 10px; /* Zmniejszono odstęp od góry */
+    font-size: 28px;
+    color: #007bff;
+}
 
+.training-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Zmniejszono odstęp między przyciskami */
+    margin-top: 20px; /* Zmniejszono odstęp od góry */
+}
 
-body {
-    
-    background: linear-gradient(to right, rgba(255, 2, 171, 0.3), white);
-    font-family: Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
+#training-result {
+    text-align: center; /* Wyśrodkowanie zawartości */
+    margin-top: 20px; /* Odstęp od góry */
+}
+
+.training-message {
+    font-size: 20px; /* Rozmiar tekstu */
+    font-weight: bold; /* Pogrubienie tekstu */
+    margin-bottom: 20px; /* Odstęp między tekstem a sliderem */
+    color: #333; /* Kolor tekstu */
+}
+
+#trainingCarousel {
+    max-width: 800px; /* Maksymalna szerokość slidera */
+    margin: 0 auto; /* Wyśrodkowanie slidera */
+    border-radius: 10px; /* Zaokrąglone rogi */
+    overflow: hidden; /* Ukryj elementy wychodzące poza slider */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtelny cień */
+}
+
+#trainingCarousel img {
+    height: auto;
+    max-height: 500px; /* Maksymalna wysokość zdjęcia */
+    object-fit: cover; /* Dopasowanie zdjęcia do kontenera */
 }

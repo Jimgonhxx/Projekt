@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wynik BMI</title>
+    <link rel="stylesheet" href="../style/projekt.css">
+</head>
+<body>
+    <h1>Twój wynik BMI</h1>
+    <div id="bmi-result-container">
+        <p id="bmi-result">Ładowanie wyniku...</p>
+    </div>
+    <script>
+        // Pobierz dane BMI z URL
+        const params = new URLSearchParams(window.location.search);
+        const bmi = params.get('bmi');
+
+        // Wyświetl wynik BMI
+        const bmiResultElement = document.getElementById('bmi-result');
+        if (bmi) {
+            bmiResultElement.textContent = `Twoje BMI wynosi: ${bmi}`;
+        } else {
+            bmiResultElement.textContent = 'Nie znaleziono wyniku BMI.';
+        }
+    </script>
+</body>
+</html>

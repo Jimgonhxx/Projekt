@@ -50,52 +50,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
     button.addEventListener("click", () => {
         // Pobierz wartości z formularza
-        const age = document.getElementById("age").value;
-        const weight = document.getElementById("weight").value;
-        const height = document.getElementById("height").value;
+        const age = parseInt(document.getElementById("age").value);
+        const weight = parseFloat(document.getElementById("weight").value);
+        const height = parseFloat(document.getElementById("height").value);
         const unit = document.getElementById("unit").value;
         const activity = document.getElementById("activity").value;
         const goal = document.getElementById("goal").value;
-
+    
         // Sprawdź, czy wybrano płeć
         const genderCheckboxes = document.querySelectorAll(".gender-checkbox");
-        const genderSelected = Array.from(genderCheckboxes).some(checkbox => checkbox.checked);
-
+        const gender = Array.from(genderCheckboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.parentElement.textContent.trim())[0];
+    
         // Walidacja danych
-        if (!genderSelected) {
-            showToast("Proszę wybrać płeć.");
+        if (!gender || !age || age <= 0 || !weight || weight <= 0 || !height || height <= 0 || !unit || !activity || !goal) {
+            showToast("Proszę wypełnić wszystkie pola poprawnie.");
             return;
         }
-        if (!age || age <= 0) {
-            showToast("Proszę podać poprawny wiek.");
-            return;
-        }
-        if (!weight || weight <= 0) {
-            showToast("Proszę podać poprawną wagę.");
-            return;
-        }
-        if (!height || height <= 0) {
-            showToast("Proszę podać poprawny wzrost.");
-            return;
-        }
-        if (!unit) {
-            showToast("Proszę wybrać jednostkę wzrostu.");
-            return;
-        }
-        if (!activity) {
-            showToast("Proszę wybrać poziom aktywności.");
-            return;
-        }
-        if (!goal) {
-            showToast("Proszę wybrać cel.");
-            return;
-        }
-
-        // Przekierowanie na inną stronę
-        showToast("Dane zostały zatwierdzone!", "success");
-        setTimeout(() => {
-            window.location.href = "projekt2.html";
-        }, 2000); // Przekierowanie po 2 sekundach
+    
+        // Oblicz BMI
+        const heightM = unit === "cm" ? height / 100 : height * 0.3048; // Konwersja wzrostu na metry
+        const bmi = (weight / (heightM * heightM)).toFixed(2);
+    
+        // Przygotuj dane do wysłania
+        const data = {
+            gender,
+            age,
+            weight,
+            height,
+            activity,
+            goal,
+            bmi
+        };
+    
+        // Wyślij dane do backendu
+        fetch('http://localhost:3000/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Błąd podczas zapisywania danych.');
+                }
+                return response.text();
+            })
+            .then(() => {
+                // Przekieruj do strony z wynikiem BMI
+                window.location.href = `bmi.html?bmi=${bmi}`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast("Wystąpił błąd podczas zapisywania danych.");
+            });
     });
 });
 

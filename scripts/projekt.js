@@ -99,8 +99,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 return response.text();
             })
             .then(() => {
-                // Przekieruj do strony z wynikiem BMI
-                window.location.href = `bmi.html?bmi=${bmi}`;
+                // Zapytaj użytkownika, czy chce zobaczyć swoje BMI
+                if (confirm("Dane zostały zapisane. Czy chcesz zobaczyć swoje BMI?")) {
+                    // Przekieruj do strony z wynikiem BMI
+                    window.location.href = `bmi.html?bmi=${bmi}`;
+                } else {
+                    showToast("Dane zostały zapisane, ale wynik BMI nie został wyświetlony.", "success");
+                }
             })
             .catch(error => {
                 console.error('Error:', error);

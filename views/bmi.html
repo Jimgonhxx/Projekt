@@ -59,11 +59,25 @@
     </div>
     <a id="home-button" href="projekt.html">Powrót do strony głównej</a>
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const token = localStorage.getItem("token");
+    
+            // Sprawdź, czy użytkownik jest zalogowany
+            if (!token) {
+                alert("Musisz być zalogowany, aby uzyskać dostęp do tej strony.");
+                window.location.href = "login.html";
+            }
+        });
+    
         // Pobierz dane BMI z backendu
         const bmiResultElement = document.getElementById('bmi-result');
         const bmiInterpretationElement = document.getElementById('bmi-interpretation');
-
-        fetch('http://localhost:3000/bmi') // Endpoint backendu
+    
+        fetch('http://localhost:3000/bmi', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Błąd podczas pobierania danych');
@@ -74,7 +88,7 @@
                 // Wyświetl wynik BMI
                 const bmi = data.bmi;
                 bmiResultElement.textContent = `Twoje BMI wynosi: ${bmi}`;
-
+    
                 // Interpretacja wyniku BMI
                 const bmiValue = parseFloat(bmi);
                 let interpretation = '';

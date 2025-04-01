@@ -6,15 +6,45 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="projekt.html">Strona główna</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#training-result">Wynik</a>
-                    </li>
+                <ul class="navbar-nav ms-auto" id="nav-links">
+                    <!-- Linki będą dynamicznie dodawane przez JavaScript -->
                 </ul>
             </div>
         </div>
     </nav>
 </header>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.getElementById("nav-links");
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            // Użytkownik jest zalogowany - pokaż linki do strony głównej i BMI
+            navLinks.innerHTML = `
+                <li class="nav-item">
+                    <a class="nav-link" href="projekt.html">Strona główna</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary" href="bmi.html" role="button">Zobacz swoje BMI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="logout">Wyloguj</a>
+                </li>
+            `;
+
+            // Obsługa wylogowania
+            document.getElementById("logout").addEventListener("click", () => {
+                localStorage.removeItem("token");
+                alert("Zostałeś wylogowany.");
+                window.location.href = "login.html";
+            });
+        } else {
+            // Użytkownik nie jest zalogowany - pokaż tylko link do logowania
+            navLinks.innerHTML = `
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Zaloguj</a>
+                </li>
+            `;
+        }
+    });
+</script>

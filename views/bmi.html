@@ -59,33 +59,54 @@
     </div>
     <a id="home-button" href="projekt.html">Powrót do strony głównej</a>
     <script>
-        // Pobierz dane BMI z URL
-        const params = new URLSearchParams(window.location.search);
-        const bmi = params.get('bmi');
-
-        // Wyświetl wynik BMI
+        document.addEventListener("DOMContentLoaded", () => {
+            const token = localStorage.getItem("token");
+    
+            // Sprawdź, czy użytkownik jest zalogowany
+            if (!token) {
+                alert("Musisz być zalogowany, aby uzyskać dostęp do tej strony.");
+                window.location.href = "login.html";
+            }
+        });
+    
+        // Pobierz dane BMI z backendu
         const bmiResultElement = document.getElementById('bmi-result');
         const bmiInterpretationElement = document.getElementById('bmi-interpretation');
-
-        if (bmi) {
-            bmiResultElement.textContent = `Twoje BMI wynosi: ${bmi}`;
-
-            // Interpretacja wyniku BMI
-            const bmiValue = parseFloat(bmi);
-            let interpretation = '';
-            if (bmiValue < 18.5) {
-                interpretation = 'Masz niedowagę. Skonsultuj się z lekarzem lub dietetykiem.';
-            } else if (bmiValue >= 18.5 && bmiValue < 24.9) {
-                interpretation = 'Twoja waga jest prawidłowa. Gratulacje!';
-            } else if (bmiValue >= 25 && bmiValue < 29.9) {
-                interpretation = 'Masz nadwagę. Rozważ zmianę stylu życia.';
-            } else {
-                interpretation = 'Masz otyłość. Skonsultuj się z lekarzem.';
-            }
-            bmiInterpretationElement.textContent = interpretation;
-        } else {
-            bmiResultElement.textContent = 'Nie znaleziono wyniku BMI.';
-        }
+    
+        fetch('http://localhost:3000/bmi', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Błąd podczas pobierania danych');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Wyświetl wynik BMI
+                const bmi = data.bmi;
+                bmiResultElement.textContent = `Twoje BMI wynosi: ${bmi}`;
+    
+                // Interpretacja wyniku BMI
+                const bmiValue = parseFloat(bmi);
+                let interpretation = '';
+                if (bmiValue < 18.5) {
+                    interpretation = 'Masz niedowagę. Skonsultuj się z lekarzem lub dietetykiem.';
+                } else if (bmiValue >= 18.5 && bmiValue < 24.9) {
+                    interpretation = 'Twoja waga jest prawidłowa. Gratulacje!';
+                } else if (bmiValue >= 25 && bmiValue < 29.9) {
+                    interpretation = 'Masz nadwagę. Rozważ zmianę stylu życia.';
+                } else {
+                    interpretation = 'Masz otyłość. Skonsultuj się z lekarzem.';
+                }
+                bmiInterpretationElement.textContent = interpretation;
+            })
+            .catch(error => {
+                console.error('Wystąpił problem:', error);
+                bmiResultElement.textContent = 'Nie udało się pobrać wyniku BMI.';
+            });
     </script>
 </body>
 </html>

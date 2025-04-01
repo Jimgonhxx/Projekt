@@ -44,6 +44,26 @@ app.post('/submit', (req, res) => {
     });
 });
 
+// Endpoint to get the latest BMI data
+app.get('/bmi', (req, res) => {
+    const query = `
+        SELECT gender, age, weight, height, activity, goal, bmi
+        FROM user_data
+        ORDER BY id DESC
+        LIMIT 1
+    `;
+    db.get(query, (err, row) => {
+        if (err) {
+            console.error(err.message);
+            return res.status(500).send('Error retrieving data');
+        }
+        if (!row) {
+            return res.status(404).send('No data found');
+        }
+        res.json(row);
+    });
+});
+
 // Start the server
 const PORT = 3000;
 app.listen(PORT, () => {
